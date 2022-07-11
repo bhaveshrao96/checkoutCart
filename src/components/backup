@@ -1,0 +1,304 @@
+
+import React from 'react';
+import { useEffect, useState } from 'react';
+import Spinner from "react-bootstrap/Spinner"
+import '../css/style.css';
+
+
+const PlayerList = () => {
+    const [playerList, setPlayerList] = useState([]);
+
+    const [searchedValue, setSearchedValue] = useState('');
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    
+
+    const fetchPost = async () => {
+
+        const response = await fetch("https://api.npoint.io/20c1afef1661881ddc9c");
+
+        const data = await response.json();
+
+        if(response.status == 200){
+            const sortedArray = data.playerList.sort((a, b) => parseFloat(a.Value) - parseFloat(b.Value));
+            setIsLoading(false)
+            setPlayerList(sortedArray);
+        }
+    };
+
+    useEffect(() => {
+        fetchPost();
+        console.log('helo')
+        var name = {
+            fname:'bhavesh',
+            lname:'rao',
+            printFullName: function(){
+              console.log(this.fname,this.lname)
+            }
+          }
+          name.printFullName()
+    }, []);
+
+    // function searchPlayer(searchValue) {
+    //     setSearchedValue(searchValue)
+    // }
+    return null
+
+}
+
+export default PlayerList;
+// (
+//     <div className='main-container'>
+//         <h1>Player List</h1>
+//        {
+//            isLoading ?  <div id="loading"></div> : null
+//        }
+//         <div> <input type="text" placeholder='Search...' onChange={e => searchPlayer(e.target.value)} /></div>
+//         {playerList.filter((val) => {
+//             if (searchedValue == '') {
+//                 return val
+//             } else if (val.PFName.toLowerCase().includes(searchedValue.toLowerCase())
+//                     || val.TName.toLowerCase().includes(searchedValue.toLowerCase())) {
+//                 return val
+//             }
+//         }).map(item => (
+//             <div key={item.id} className='list-item'>
+//                 <div className='card-wrapper'>
+//                     <div className='image-wrapper'>
+//                         {
+//                             item.Id ? <img src={require(`../player-images/${item.Id}.png`)} /> : <img src={require(`../player-images/63706.png`)} />
+//                         }
+//                     </div>
+//                     <div className='detail-wrapper'>
+//                         <div className='name'>{item.PFName}</div>
+//                         <div className='skill'>{item.SkillDesc}</div>
+//                         <div className='label'>UpComing Matches
+//                             {
+//                                 item.UpComingMatchesList[0].CCode != '' && item.UpComingMatchesList[0].CCode != null ?
+//                                     <div className='upMatch'>
+//                                         <div>- {item.UpComingMatchesList[0].CCode} Vs {item.UpComingMatchesList[0].VsCCode}</div>
+//                                         <div className='date'>{item.UpComingMatchesList[0].MDate}</div>
+//                                     </div>
+//                                     : 
+//                                     <div className='upMatch'>
+//                                         <div>No UpComing Matches</div>
+//                                     </div>
+//                             }
+//                         </div>
+//                         <div className='value'>${item.Value}</div>
+//                     </div>
+//                 </div>
+//             </div>
+//         ))}
+       
+//     </div>
+// )
+
+  // Call, Apply and Bind
+
+        // var name = {
+        //     fname:'bhavesh',
+        //     lname:'rao',
+           
+        //   }
+        //   function printFullName (){
+        //     console.log(this.fname,this.lname)
+        //   }
+        //   var name2 = {
+        //     fname:'Rahul',
+        //     lname:'Sharma',
+        //   }
+        //   printFullName.call(name2)
+
+        // Promises
+
+        // let p = new Promise((resolve,reject)=>{
+            
+        //     let a = 1+4;
+
+        //     if(a==2){
+        //         resolve('Success')
+        //     }else{
+        //         reject("Failed")
+        //     }
+        // })
+
+        // p.then((message)=>{
+        //     console.log("This is inside then,"+message)
+        // }).catch((error)=>{
+        //     console.log("This is inside catch,"+error)
+        // })
+
+        // const p1 = new Promise((resolve,reject)=>{
+        //     resolve('p1 promise resolved')
+        // })
+        // const p2 = new Promise((resolve,reject)=>{
+        //     resolve('p2 promise resolved')
+        // })
+        // const p3 = new Promise((resolve,reject)=>{
+        //     resolve('p3 promise resolved')
+        // })
+
+        // Promise.all([p1,p2,p3]).then((messages)=>{
+        //     console.log(messages)
+        // })
+        // Promise.race([p2,p1,p3]).then((messages)=>{
+        //     console.log(messages)
+        // })
+
+        // Async and Await
+         
+        // function makeRequest(location){
+        //     return new Promise((resolve,reject)=>{
+        //         console.log(`Making Request to ${location}`)
+        //         if(location=="Google"){
+        //             resolve('Google says hi')
+        //         }else{
+        //             reject('We only talk to Google')
+        //         }
+        //     })
+        // }
+
+        // function processRequest(response){
+        //     return new Promise((resolve,reject)=>{
+        //         console.log('Processing Response')
+        //         resolve(`Extra Information + ${response}`)
+        //     })
+        // }
+
+        // // makeRequest('Google').then(response=>{
+        // //     console.log('Response Received')
+
+        // //     return processRequest(response)
+        // // }).then(processedResponse=>{
+        // //     console.log(processedResponse)
+
+        // // })
+
+        // //with async await
+
+        // async function doWork(){
+        //     const response = await makeRequest('Google')
+        //     console.log('Response Received')
+        //     const processedResponse = await processRequest(response)
+        //     console.log(processedResponse)
+
+        // }
+        // doWork()
+
+        // Callback Functions
+
+       
+
+        
+
+        // setTimeout(() => {
+        //     console.log("Set timeout callback function called")
+        // }, 5000);
+
+        // let a = function(cb){
+        //     console.log("First Function")
+        //     cb()
+        // }
+        // let b = function(){
+        //     console.log("Second Function")
+        // }
+        // a(b)
+
+        // Let vs var vs const and Hoisting
+
+        // console.log(b)
+        //     let a = 10;
+        //     var b = 8;
+
+            
+           
+            
+            //  console.log(name)
+            
+            //  var name = "bhavesh";
+
+            //  var name
+
+
+            // imNotSure()
+            // function imNotSure(){
+            //      var tellMe ="Doesn't Matter"
+            //      console.log(tellMe)
+            //      var x= 'bahevsh'
+            //      let y = 'rahul'
+            //      const z = 'romil'
+            //     {
+            //      console.log(x)
+            //      console.log(y)
+            //      console.log(z)
+
+                 
+            //     }
+            //     console.log(x)
+            //      console.log(y)
+            //      console.log(z)
+
+            //     // console.log(y)
+            //     // console.log(z)
+            //  }
+             
+            // var x
+            // x = 10
+            // console.log(x)
+            // let y
+            // y = 20
+            // console.log(y)
+            // const z= 20
+            // console.log(z)
+
+            // num = 6
+           
+        //    x()
+        // Map,Reduce and Filter
+
+        // //Map
+
+        // const arr1 = [1,2,3,4,5]
+
+        // const arr2 = arr1.map(item=>item * 3)
+
+        // // console.log(arr1)
+        // console.log(arr2)
+
+        // //Filter
+
+        // const number = [1,2,3,4,5]
+
+        // const filteredArr = number.filter((item) => item % 2 == 0)
+
+        // console.log(filteredArr)
+
+        // //Reduce
+
+        // const nums = [1,2,3,4,5]
+
+        // const reducedArr = nums.reduce(function(result, item) {return result + item},0)
+
+        // console.log(reducedArr)
+
+        // Closures
+        // function x(){
+        //     var a = 10;
+        //     function y(){
+        //         console.log(a)
+        //     }
+        //     y()
+        // }
+        // x()
+        // uni
+        function stringReverse(str){
+            var newString =''
+            for(let i = str.length-1 ; i>=0 ; i--){
+              newString += str[i]
+            }
+            console.log('Reversed string is ' ,newString)
+          }
+          
+          stringReverse('heelo');

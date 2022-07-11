@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+body {
+  font-family: 'Raleway', cursive;
+  background-color: aliceblue;
+}
+.main-container{
+text-align: center;
+}
+.list-item{
+    display: inline-block;
+    text-align: left;
+    list-style: none;
+    background-color: #eae2b7;
+    padding: 0;
+    margin: 20px;
+    border-radius: 10px;
+    width: 300px;
+    padding-top: 50px;
+    box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+    0 5px 15px 0 rgba(37, 44, 97, 0.15);
+    border-radius: 0.25em;
+    min-height: 280px;
+    transition: .3s;
+}
+.list-item:hover{
+    transform: scale(1.05);
+}
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.image-wrapper{
+    background-color: #fca311;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+img{
+    height: 200px;
+    width: 200px;
+    margin-top: -40px
+}
+.detail-wrapper{
+    margin: 10px;
+    position: relative;
+    color: #14213d;
+}
+.name{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.skill{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    position: absolute;
+    top: -207px;
+    right: -10px;
+    padding: 0px;
+    background: #81b29a;
+    padding: 4px;
+    color: #14213d;
+}
+.label{
+    font-size: 16px;
+    font-weight: 600;
+}
+.value{
+    position: absolute;
+    top: -33px;
+    right: 0;
+    background-color: #81b29a;
+    color: #14213d;
+    padding: 10px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upMatch{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.date{
+    font-size: 10px;
+    margin-left: 10px;
+}
+.no-data-wrapper{
+    margin-top: 50px;
+}
+.no-data-image{
+    height: 150px;
+    width: 150px;
+    margin-top: 0;
+}
+#loading {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgb(26 108 97 / 56%);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+  
+  @keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @-webkit-keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
